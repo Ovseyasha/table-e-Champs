@@ -1,0 +1,61 @@
+html, body{
+  font-family: 'PT Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #FAF9F9;
+}
+.table {
+  margin: 10px;
+  background: #FFFFFF;
+  font-size: 16px;
+  padding: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+}
+.table__item {
+}
+.table__month {
+  font-weight: bold;
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+  padding: 4px 0;
+}
+.table__month:hover{
+  background: #EDECEC;
+}
+.table__event {
+  border-top: 1px solid #dee2e6;
+  
+}
+.table__event:hover{
+  background: #EDECEC;
+}
+.event {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  padding: .75em;
+}
+
+.event__date {
+  color: #979797;
+  flex-basis: 20%;
+}
+.event__content {
+  flex-basis: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.event__description {
+  font-weight: bold;
+  color: #000;
+}
+.event__info {
+  margin-top: 0.3em;
+  color: #979797;
+  display: flex;
+  justify-content: space-between;
+}
+.fas {
+  margin-right: 0.2em;
+}
