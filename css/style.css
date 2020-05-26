@@ -39,9 +39,11 @@ html, body{
 .event__date {
   color: #979797;
   flex-basis: 20%;
+  
 }
 .event__content {
-  flex-basis: 80%;
+  margin-left: 2%;
+  flex-basis: 78%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -55,6 +57,12 @@ html, body{
   color: #979797;
   display: flex;
   justify-content: space-between;
+}
+.event__city{
+  display: flex;
+}
+.event__category{
+  text-align: right;
 }
 .fas {
   margin-right: 0.2em;
