@@ -1,5 +1,5 @@
 window.onload = function (e) {
-  let table = [
+  let data = [
     {
       month: 'Январь 2020',
       events: [
@@ -88,71 +88,47 @@ window.onload = function (e) {
       ],
     },
   ];
-  let table__item = this.document.querySelector('.table__item');
 
-  for (let i = 0; i < table.length; i++) {
+  class Table {
+    constructor(props) {
+      this.table = [];
+      for (let i = 0; i < props.length; i++) {
+        this.table.push(props[i]);
 
-    let month = this.document.createElement('div');
-    month.classList.add('table__month');
-    month.innerHTML = table[i].month;
-    table__item.appendChild(month);
+      }
+      this.render();
+    }
+    render() {
+      for (let i = 0; i < this.table.length; i++) {
+        let table__item = document.querySelector('.table__item');
+        table__item.innerHTML += `<div class="table__month">${this.table[i].month}</div>`;
+        for (let j = 0; j < this.table[i].events.length; j++) {
+          table__item.innerHTML += `<div class="table__event">
+            <a class="event" href="${this.table[i].events[j].link}">
+              <div class="event__date date">
+                <div class="event__from">${this.table[i].events[j].from}</div>
+                <div class="event__to">${this.table[i].events[j].to}</div>
+              </div>
+              <div class="event__content">
+                <div class="event__description">
+                  ${this.table[i].events[j].description}
+                </div>
+                <div class="event__info">
+                  <div class="event__city">
+                    <i class="fas fa-map-marker-alt"></i>
+                    ${this.table[i].events[j].city}
+                  </div>
+                  <div class="event__category">
+                    ${this.table[i].events[j].category}
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>`;
 
-    for (let j = 0; j < table[i].events.length; j++) {
-      let table__event = this.document.createElement('div');
-      let event = this.document.createElement('a');
-      let event__date = this.document.createElement('div');
-      let event__from = this.document.createElement('div');
-      let event__to = this.document.createElement('div');
-      let event__content = this.document.createElement('div');
-      let event__description = this.document.createElement('div');
-      let event__info = this.document.createElement('div');
-      let event__city = this.document.createElement('div');
-      let fas = this.document.createElement('i');
-      let event__category = this.document.createElement('div');
-
-      table__event.classList.add('table__event');
-      event.classList.add('event');
-      event__date.classList.add('event__date');
-      event__date.classList.add('date');
-      event__from.classList.add('event__from');
-      event__to.classList.add('event__to');
-      event__content.classList.add('event__content');
-      event__description.classList.add('event__description');
-      event__info.classList.add('event__info');
-      event__city.classList.add('event__city');
-      fas.classList.add('fas');
-      fas.classList.add('fa-map-marker-alt');
-      fas.classList.add('color-97');
-      event__category.classList.add('event__category');
-
-
-      event.setAttribute('href', table[i].events[j].link);
-
-      event__from.innerHTML = table[i].events[j].from;
-
-      event__to.innerHTML = table[i].events[j].to;
-
-      event__description.innerHTML = table[i].events[j].description;
-
-      event__city.appendChild(fas);
-      event__city.innerHTML += table[i].events[j].city;
-
-      event__category.innerHTML = table[i].events[j].category;
-
-      event__date.appendChild(event__from);
-      event__date.appendChild(event__to);
-
-      event__info.appendChild(event__city);
-      event__info.appendChild(event__category);
-
-      event__content.appendChild(event__description);
-      event__content.appendChild(event__info);
-
-      event.appendChild(event__date);
-      event.appendChild(event__content);
-
-      table__event.appendChild(event);
-      table__item.appendChild(table__event);
+        }
+      }
     }
   }
+  new Table(data);
 };
