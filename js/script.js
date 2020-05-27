@@ -89,46 +89,47 @@ window.onload = function (e) {
     },
   ];
 
-  class Table {
-    constructor(props) {
-      this.table = [];
-      for (let i = 0; i < props.length; i++) {
-        this.table.push(props[i]);
 
-      }
-      this.render();
+  new Table(data);
+};
+class Table {
+  constructor(props) {
+    this.table = [];
+    for (let i = 0; i < props.length; i++) {
+      this.table.push(props[i]);
+
     }
-    render() {
-      for (let i = 0; i < this.table.length; i++) {
-        let table__item = document.querySelector('.table__item');
-        table__item.innerHTML += `<div class="table__month">${this.table[i].month}</div>`;
-        for (let j = 0; j < this.table[i].events.length; j++) {
-          table__item.innerHTML += `<div class="table__event">
-            <a class="event" href="${this.table[i].events[j].link}">
-              <div class="event__date date">
-                <div class="event__from">${this.table[i].events[j].from}</div>
-                <div class="event__to">${this.table[i].events[j].to}</div>
+    this.render();
+  }
+  render() {
+    for (let i = 0; i < this.table.length; i++) {
+      let table__item = document.querySelector('.table__item');
+      table__item.innerHTML += `<div class="table__month">${this.table[i].month}</div>`;
+      for (let j = 0; j < this.table[i].events.length; j++) {
+        table__item.innerHTML += `<div class="table__event">
+          <a class="event" href="${this.table[i].events[j].link}">
+            <div class="event__date date">
+              <div class="event__from">${this.table[i].events[j].from}</div>
+              <div class="event__to">${this.table[i].events[j].to}</div>
+            </div>
+            <div class="event__content">
+              <div class="event__description">
+                ${this.table[i].events[j].description}
               </div>
-              <div class="event__content">
-                <div class="event__description">
-                  ${this.table[i].events[j].description}
+              <div class="event__info">
+                <div class="event__city">
+                  <i class="fas fa-map-marker-alt"></i>
+                  ${this.table[i].events[j].city}
                 </div>
-                <div class="event__info">
-                  <div class="event__city">
-                    <i class="fas fa-map-marker-alt"></i>
-                    ${this.table[i].events[j].city}
-                  </div>
-                  <div class="event__category">
-                    ${this.table[i].events[j].category}
-                  </div>
+                <div class="event__category">
+                  ${this.table[i].events[j].category}
                 </div>
               </div>
-            </a>
-          </div>`;
+            </div>
+          </a>
+        </div>`;
 
-        }
       }
     }
   }
-  new Table(data);
-};
+}
